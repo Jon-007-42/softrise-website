@@ -1,0 +1,453 @@
+/* =================================================================
+   SOFTRISE — DESIGN TOKENS
+   Dyb marineblå (logo) + varm koral-accent + rolig off-white.
+   Skift værdierne her for at ramme jeres nøjagtige brand-hex.
+   ================================================================= */
+:root {
+  /* Farver */
+  --color-navy-900: #0b2545;   /* Primær mørkeblå — headlines, footer */
+  --color-navy-950: #081b33;   /* Dybere nuance — hero-overlay */
+  --color-navy-700: #1c3a63;   /* Sekundær blå — kanter, ghost-elementer */
+  --color-coral-500: #e8785a;  /* Varm accent — CTA, ikoner, understregninger */
+  --color-coral-100: #fbe6de;  /* Meget lys koral — baggrunde til badges */
+  --color-white: #ffffff;
+  --color-mist: #f6f8fa;       /* Rolig off-white sektionsbaggrund */
+  --color-slate-600: #4a5568;  /* Brødtekst */
+  --color-slate-300: #cbd5e1;
+
+  /* Typografi */
+  --font-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --tracking-eyebrow: 0.14em;
+
+  /* Layout */
+  --container-width: 1120px;
+  --space-section: clamp(4rem, 8vw, 8rem);
+  --radius-md: 14px;
+  --radius-lg: 22px;
+
+  /* Bevægelse */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fade: 800ms;
+}
+
+/* =================================================================
+   RESET & BASISOPSÆTNING
+   ================================================================= */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-base);
+  color: var(--color-slate-600);
+  background: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img { max-width: 100%; display: block; }
+
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Synlig, tydelig fokus-ring — tilgængelighed frem for alt */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-coral-500);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Genbrugelige tekst-elementer -------------------------------------------- */
+.eyebrow {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-coral-500);
+  margin: 0 0 0.9rem;
+}
+.eyebrow--dark { color: var(--color-coral-500); }
+.eyebrow--light { color: var(--color-coral-500); }
+
+.section {
+  padding-block: var(--space-section);
+}
+
+.section__title {
+  font-size: clamp(1.7rem, 3.2vw, 2.5rem);
+  font-weight: 700;
+  color: var(--color-navy-900);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin: 0 0 1.5rem;
+  max-width: 32ch;
+}
+
+.section__subtitle {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-navy-900);
+  margin: 0.2rem 0 1rem;
+}
+
+/* Accentdetalje under et nøgleord i overskriften — signaturmotiv, genbruges diskret */
+.accent-underline {
+  position: relative;
+  white-space: nowrap;
+}
+
+.accent-underline::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: 0.06em;
+  height: 0.28em;
+  background: var(--color-coral-500);
+  border-radius: 2px;
+  opacity: 0.85;
+  transform-origin: left;
+  z-index: -1;
+}
+
+/* =================================================================
+   1. HERO
+   ================================================================= */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 1.5rem 4rem;
+  overflow: hidden;
+  isolation: isolate;
+  /* INGEN farve eller baggrund her! */
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2; /* Billedet helt bagerst */
+  background-image: url('softrise-problem-billede.jpg.webp');
+  background-size: cover;
+  background-position: center;
+  
+  /* HER STYRER DU GREYSCALE: 100% er sort/hvid */
+  filter: grayscale(100%);
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1; /* Mellem billedet og teksten */
+  
+  /* Vi samler både glød og blåt overlay her for at lagene spiller korrekt */
+  background: 
+    /* Den koralfarvede glød øverst */
+    radial-gradient(60% 50% at 80% 15%, rgba(232, 120, 90, 0.16), transparent 70%),
+    /* Den mørkeblå farve under gløden - Her styrer du Opacity (0.80 og 0.90) */
+    linear-gradient(180deg, rgba(8, 27, 51, 0.80) 0%, rgba(8, 27, 51, 0.90) 100%);
+}
+
+/* ... resten af hero-klassserne (.eyebrow, .title osv.) forbliver urørte ... */
+
+.hero__content {
+  max-width: 720px;
+  text-align: left;
+}
+
+.hero .eyebrow { color: var(--color-coral-500); }
+
+.hero__title {
+  font-size: clamp(2.1rem, 5.4vw, 3.6rem);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  color: var(--color-white);
+  margin: 0 0 1.4rem;
+}
+
+.hero__subtitle {
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.82);
+  max-width: 46ch;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* Scroll-indikator: rolig, ikke-påtrængende bounce */
+.scroll-cue {
+  position: absolute;
+  left: 50%;
+  bottom: 2.5rem;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  animation: cueFloat 2.6s ease-in-out infinite;
+}
+.scroll-cue__line {
+  width: 1px;
+  height: 34px;
+  background: rgba(255, 255, 255, 0.4);
+}
+.scroll-cue__arrow { display: block; }
+
+@keyframes cueFloat {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, 8px); }
+}
+
+/* =================================================================
+   2. SOCIAL PROOF
+   ================================================================= */
+.section--proof {
+  background: var(--color-mist);
+}
+
+.quote-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+@media (min-width: 860px) {
+  .quote-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.quote-card {
+  position: relative;
+  background: var(--color-white);
+  border-top: 3px solid var(--color-coral-500);
+  border-radius: var(--radius-md);
+  padding: 2.2rem 1.8rem 1.8rem;
+  margin: 0;
+  box-shadow: 0 1px 2px rgba(11, 37, 69, 0.04), 0 12px 28px -18px rgba(11, 37, 69, 0.25);
+}
+
+.quote-card__mark {
+  position: absolute;
+  top: 0.3rem;
+  right: 1.2rem;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 4.5rem;
+  line-height: 1;
+  color: var(--color-coral-100);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.quote-card__text {
+  position: relative;
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: var(--color-slate-600);
+  margin: 0 0 1.4rem;
+}
+
+.quote-card__source {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-navy-900);
+}
+
+/* =================================================================
+   3. LØSNING & FORRETNING
+   ================================================================= */
+.solution__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .solution__grid {
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 4.5rem;
+  }
+}
+
+.solution__visual {
+  background: var(--color-mist);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wedge-illustration { 
+  width: 100%; 
+  max-width: 320px; 
+  height: auto; 
+  overflow: visible; 
+}
+.wedge-illustration__bed { 
+  fill: var(--color-navy-900); 
+}
+
+/* Orange luftpude */
+.wedge-illustration__air {
+  fill: var(--color-coral-500);
+  transform-origin: 160px 80px; /* Hængslet ved sengekanten */
+  animation: airInflate 4.5s var(--ease-out) infinite;
+}
+
+/* Den roterende streg (Løftefladen) */
+.wedge-illustration__pad {
+  stroke: var(--color-navy-700);
+  stroke-width: 8;
+  stroke-linecap: round;
+  transform-origin: 160px 80px; /* Hængslet ved sengekanten */
+  animation: padLift 4.5s var(--ease-out) infinite;
+}
+
+/* Animation: Løfter stregen fra lodret til vandret */
+@keyframes padLift {
+  0%, 15%  { transform: rotate(0deg); }
+  45%, 75% { transform: rotate(-90deg); }
+  100%     { transform: rotate(0deg); }
+}
+
+/* Animation: Puster den orange kile op */
+@keyframes airInflate {
+  0%, 15%  { transform: scale(0); opacity: 0; }
+  45%, 75% { transform: scale(1); opacity: 0.92; }
+  100%     { transform: scale(0); opacity: 0; }
+}
+
+.solution__spacer { margin-top: 2.2rem; }
+
+/* =================================================================
+   4. FOOTER / KONTAKT
+   ================================================================= */
+.footer {
+  background: var(--color-navy-900);
+  color: var(--color-white);
+  padding-block: var(--space-section);
+}
+
+.footer__inner {
+  text-align: center;
+}
+
+.footer__title {
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  font-weight: 700;
+  margin: 0 0 2.5rem;
+  color: var(--color-white);
+}
+
+.footer__contact {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 2.5rem;
+}
+
+@media (min-width: 640px) {
+  .footer__contact { flex-direction: row; justify-content: center; gap: 1.5rem; }
+}
+
+/* Klik-for-at-kopiere knapper — ingen mailto, ingen formular */
+.copy-item {
+  appearance: none;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--color-white);
+  border-radius: var(--radius-md);
+  padding: 1.1rem 2rem;
+  min-width: 260px;
+  cursor: pointer;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  transition: border-color 220ms var(--ease-out), background 220ms var(--ease-out), transform 220ms var(--ease-out);
+  font-family: inherit;
+}
+
+.copy-item:hover {
+  border-color: var(--color-coral-500);
+  background: rgba(232, 120, 90, 0.08);
+  transform: translateY(-2px);
+}
+
+.copy-item__label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-coral-500);
+}
+
+.copy-item__value {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.copy-item__hint {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Midlertidig "kopieret" tilstand, sat af script.js */
+.copy-item.is-copied {
+  border-color: var(--color-coral-500);
+  background: rgba(232, 120, 90, 0.14);
+}
+.copy-item.is-copied .copy-item__hint { color: var(--color-coral-500); }
+
+.footer__meta {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.45);
+  margin: 0;
+}
+
+/* =================================================================
+   SCROLL-ANIMATIONER (fade-in-up)
+   StartTilstand sættes her; script.js tilføjer .is-visible via IntersectionObserver.
+   ================================================================= */
+.fade-in {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity var(--duration-fade) var(--ease-out), transform var(--duration-fade) var(--ease-out);
+}
+.fade-in.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Respekter brugere, der har fravalgt bevægelse */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .fade-in { opacity: 1; transform: none; transition: none; }
+  .scroll-cue { animation: none; }
+  .wedge-illustration__pad,
+  .wedge-illustration__air { animation: none; opacity: 1; transform: none; }
+}

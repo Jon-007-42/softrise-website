@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SoftRise LØFT — Skånsom forflytning uden nedslidning</title>
+  <link rel="icon" type="image/png" href="softrise-logo.png">
+  <meta name="description" content="SoftRise LØFT er et pneumatisk kile-system, der giver borgere værdighed og SOSU-medarbejdere en rygvenlig hverdag. Device as a Service til den danske plejesektor.">
+
+  <!-- Google Fonts: Inter, som angivet i brief. Vægte 400/500/600/700/800 dækker både brødtekst og display. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============================================= -->
+  <!-- 1. HERO — fylder 100vh. Skift baggrundsbillede i style.css under .hero (søg efter "UDSKIFT BILLEDE") -->
+  <!-- ============================================= -->
+  <header class="hero">
+    <div class="hero__overlay"></div>
+
+    <div class="hero__content">
+      <p class="eyebrow">SoftRise · Device as a Service</p>
+      <h1 class="hero__title">
+        Den sidste forflytning<br>
+        skal ikke koste <span class="accent-underline">en ryg</span>.
+      </h1>
+      <p class="hero__subtitle">
+        Et pneumatisk kile-system, der løfter borgere skånsomt op i sengen —
+        og fjerner det tunge, gentagne løft fra SOSU-medarbejderens hverdag.
+      </p>
+    </div>
+
+    <!-- Nedadgående indikator, guider brugeren videre i flowet -->
+    <a href="#stemmer" class="scroll-cue" aria-label="Scroll til næste sektion">
+      <span class="scroll-cue__line"></span>
+      <svg class="scroll-cue__arrow" width="20" height="12" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L10 10L19 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </header>
+
+  <!-- ============================================= -->
+  <!-- 2. SOCIAL PROOF — tre citater fra praksis -->
+  <!-- ============================================= -->
+  <section id="stemmer" class="section section--proof">
+    <div class="container">
+      <p class="eyebrow eyebrow--dark fade-in">Stemmer fra virkeligheden</p>
+      <h2 class="section__title fade-in">Dem, der kender vægten af det, vi løser</h2>
+
+      <div class="quote-grid">
+
+        <blockquote class="quote-card fade-in">
+          <span class="quote-card__mark" aria-hidden="true">&rdquo;</span>
+          <p class="quote-card__text">
+            Vi har set kolleger blive invalideret af benløft-skader. Det er en
+            &laquo;silent killer&raquo; for ryggen. SoftRise LØFT fjerner risikoen helt,
+            fordi det er luften, der tager slæbet – ikke min lænd.
+          </p>
+          <footer class="quote-card__source">SOSU-medarbejder</footer>
+        </blockquote>
+
+        <blockquote class="quote-card fade-in">
+          <span class="quote-card__mark" aria-hidden="true">&rdquo;</span>
+          <p class="quote-card__text">
+            Mange af vores ældre har hud så tynd som papir. Vi kan ikke spænde
+            seler om deres ankler eller bruge manuelle &laquo;lagen-træk&raquo; uden at
+            risikere sår. SoftRise løfter skånsomt nedefra.
+          </p>
+          <footer class="quote-card__source">Forflytningsvejleder</footer>
+        </blockquote>
+
+        <blockquote class="quote-card fade-in">
+          <span class="quote-card__mark" aria-hidden="true">&rdquo;</span>
+          <p class="quote-card__text">
+            Hvis en borger selv kan komme i seng ved hjælp af SoftRise, sparer
+            vi et aftenbesøg. Det giver øget selvstændighed og frigør ressourcer.
+          </p>
+          <footer class="quote-card__source">Visitator i Hjemmeplejen</footer>
+        </blockquote>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================= -->
+  <!-- 3. LØSNINGEN & FORRETNINGEN -->
+  <!-- ============================================= -->
+  <section id="losning" class="section section--solution">
+    <div class="container solution__grid">
+
+      <!-- Signaturelement: Hængsel-løft -->
+      <div class="solution__visual fade-in" aria-hidden="true">
+        <svg class="wedge-illustration" viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg">
+          <!-- Sengen -->
+          <rect x="20" y="80" width="140" height="12" rx="4" class="wedge-illustration__bed" />
+          
+          <!-- Den orange luftpude -->
+          <path d="M160,80 L260,80 L160,160 Z" class="wedge-illustration__air" />
+          
+          <!-- Løftefladen (SoftRise kilen) -->
+          <line x1="160" y1="80" x2="160" y2="180" class="wedge-illustration__pad" />
+        </svg>
+      </div>
+
+      <div class="solution__text">
+        <p class="eyebrow eyebrow--dark fade-in">Teknologien</p>
+        <h2 class="section__title fade-in">Et stationært, pneumatisk kile-system</h2>
+        <p class="fade-in">
+          SoftRise LØFT monteres diskret ved sengen og bruger trykluft til gradvist
+          at hæve en blød kile under borgeren — uden seler, uden håndkraft og uden
+          hudpåvirkning. Bevægelsen er langsom, stabil og forudsigelig, så både
+          borger og medarbejder føler sig trygge under hele forflytningen.
+        </p>
+
+        <p class="eyebrow eyebrow--dark fade-in solution__spacer">Forretningsmodellen</p>
+        <h3 class="section__subtitle fade-in">Device as a Service</h3>
+        <p class="fade-in">
+          Kommuner og plejeoperatører abonnerer på løsningen frem for at investere
+          i udstyr. Det betyder ingen anlægsinvestering, løbende service og
+          vedligehold inkluderet, og mulighed for hurtigt at skalere op eller ned
+          efter borgerbehov — en model, der matcher den kommunale budgetvirkelighed.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================= -->
+  <!-- 4. KONTAKT / FOOTER — minimalistisk, ingen formular, ingen mailto -->
+  <!-- ============================================= -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="eyebrow eyebrow--light fade-in">Lad os tale sammen</p>
+      <h2 class="footer__title fade-in">SoftRise ApS</h2>
+
+      <div class="footer__contact fade-in">
+        <!-- Telefonnummer: klik-for-at-kopiere via script.js. UDSKIFT TAL med rigtigt nummer -->
+        <button class="copy-item" type="button" data-copy="+45 42342986">
+          <span class="copy-item__label">Telefon</span>
+          <span class="copy-item__value">+45 42 34 29 86</span>
+          <span class="copy-item__hint">Klik for at kopiere</span>
+        </button>
+
+        <!-- E-mail: klik-for-at-kopiere via script.js. UDSKIFT med rigtig e-mail -->
+        <button class="copy-item" type="button" data-copy="jwerki@yahoo.com">
+          <span class="copy-item__label">E-mail</span>
+          <span class="copy-item__value">jwerki@yahoo.com</span>
+          <span class="copy-item__hint">Klik for at kopiere</span>
+        </button>
+      </div>
+
+      <p class="footer__meta fade-in">© <span id="year"></span> SoftRise ApS · Nykøbing Mors, Danmark</p>
+    </div>
+  </footer>
+
+  <!-- Skærmlæser-venlig live-region til kopier-feedback -->
+  <div class="visually-hidden" role="status" aria-live="polite" id="copy-announcer"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
