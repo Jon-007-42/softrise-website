@@ -148,7 +148,7 @@ button:focus-visible {
   background-image: url('softrise-problem-billede.jpg.webp');
   background-size: cover;
   background-position: center;
-  
+
   /* HER STYRER DU GREYSCALE: 100% er sort/hvid */
   filter: grayscale(100%);
 }
@@ -157,9 +157,9 @@ button:focus-visible {
   position: absolute;
   inset: 0;
   z-index: -1; /* Mellem billedet og teksten */
-  
+
   /* Vi samler både glød og blåt overlay her for at lagene spiller korrekt */
-  background: 
+  background:
     /* Den koralfarvede glød øverst */
     radial-gradient(60% 50% at 80% 15%, rgba(232, 120, 90, 0.16), transparent 70%),
     /* Den mørkeblå farve under gløden - Her styrer du Opacity (0.80 og 0.90) */
@@ -299,44 +299,97 @@ button:focus-visible {
   justify-content: center;
 }
 
-.wedge-illustration { 
-  width: 100%; 
-  max-width: 320px; 
-  height: auto; 
-  overflow: visible; 
-}
-.wedge-illustration__bed { 
-  fill: var(--color-navy-900); 
+/* -----------------------------------------------------------------
+   KILE-ILLUSTRATION — organisk, pneumatisk oppustning
+   Erstatter den tidligere simple rotate/scale-version.
+   ----------------------------------------------------------------- */
+
+.wedge-illustration {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  overflow: visible;
 }
 
-/* Orange luftpude */
-.wedge-illustration__air {
-  fill: var(--color-coral-500);
-  transform-origin: 160px 80px; /* Hængslet ved sengekanten */
-  animation: airInflate 4.5s var(--ease-out) infinite;
+.wedge-illustration__bed {
+  fill: var(--color-navy-900);
 }
 
-/* Den roterende streg (Løftefladen) */
-.wedge-illustration__pad {
+.wedge-illustration__bed-shadow {
+  fill: var(--color-navy-950);
+  opacity: 0.18;
+}
+
+/* Skygge under selve kilen, pulserer i takt med oppustning/nedfald */
+.wedge-illustration__cushion-shadow {
+  fill: var(--color-navy-950);
+  opacity: 0;
+  animation: cushionShadowPulse 4.5s var(--ease-out) infinite;
+}
+
+/* Gruppen der roterer + skalerer om hængslet ved sengekanten */
+.wedge-illustration__cushion-group {
+  transform-origin: 160px 80px;
+  animation: cushionInflate 4.5s var(--ease-out) infinite;
+}
+
+.wedge-illustration__cushion-body {
+  fill: url(#cushionGradient);
   stroke: var(--color-navy-700);
-  stroke-width: 8;
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+}
+
+.wedge-illustration__cushion-sheen {
+  fill: url(#cushionSheen);
+}
+
+.wedge-illustration__seam {
+  fill: none;
+  stroke: var(--color-navy-700);
+  stroke-width: 1;
   stroke-linecap: round;
-  transform-origin: 160px 80px; /* Hængslet ved sengekanten */
-  animation: padLift 4.5s var(--ease-out) infinite;
+  stroke-dasharray: 3 4;
+  opacity: 0.35;
 }
 
-/* Animation: Løfter stregen fra lodret til vandret */
-@keyframes padLift {
-  0%, 15%  { transform: rotate(0deg); }
-  45%, 75% { transform: rotate(-90deg); }
-  100%     { transform: rotate(0deg); }
+/* Rolig, organisk oppustning: flad → hæver sig blidt til fuld vinkel → falder roligt ned igen */
+@keyframes cushionInflate {
+  0%, 12% {
+    transform: rotate(0deg) scale(0.12);
+    opacity: 0.3;
+  }
+  32% {
+    transform: rotate(-17deg) scale(0.82);
+    opacity: 0.85;
+  }
+  48%, 74% {
+    transform: rotate(-24deg) scale(1);
+    opacity: 1;
+  }
+  90% {
+    transform: rotate(-6deg) scale(0.35);
+    opacity: 0.55;
+  }
+  100% {
+    transform: rotate(0deg) scale(0.12);
+    opacity: 0.3;
+  }
 }
 
-/* Animation: Puster den orange kile op */
-@keyframes airInflate {
-  0%, 15%  { transform: scale(0); opacity: 0; }
-  45%, 75% { transform: scale(1); opacity: 0.92; }
-  100%     { transform: scale(0); opacity: 0; }
+@keyframes cushionShadowPulse {
+  0%, 12% {
+    opacity: 0;
+    transform: scaleX(0.3);
+  }
+  48%, 74% {
+    opacity: 0.16;
+    transform: scaleX(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scaleX(0.3);
+  }
 }
 
 .solution__spacer { margin-top: 2.2rem; }
@@ -448,6 +501,10 @@ button:focus-visible {
   html { scroll-behavior: auto; }
   .fade-in { opacity: 1; transform: none; transition: none; }
   .scroll-cue { animation: none; }
-  .wedge-illustration__pad,
-  .wedge-illustration__air { animation: none; opacity: 1; transform: none; }
+  .wedge-illustration__cushion-group,
+  .wedge-illustration__cushion-shadow {
+    animation: none;
+    transform: rotate(-24deg) scale(1);
+    opacity: 1;
+  }
 }
